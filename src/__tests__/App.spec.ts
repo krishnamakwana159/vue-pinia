@@ -1,13 +1,8 @@
 import App from '@/App.vue'
 import NavBar from '@/core/components/NavBar.vue'
-import ProductList from '@/core/components/ProductList.vue'
-import AdminDashboard from '@/modules/admin/views/AdminDashboard.vue'
 import { RouterLinkStub, mount } from '@vue/test-utils'
-import { vi, it, describe, expect } from 'vitest'
-import { RouterLink, RouterView } from 'vue-router'
-import router from '@/router'
 import { beforeEach } from 'node:test'
-import ProductForm from '@/modules/admin/components/ProductForm.vue'
+import { describe, expect, it, vi } from 'vitest'
 
 describe('App Component', () => {
   beforeEach(() => {
