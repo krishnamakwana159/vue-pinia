@@ -62,7 +62,7 @@ const routes: Readonly<NavBarModel[]> = [
               class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:p-0 hover:md:text-blue-700"
               :to="route.path"
               v-slot="{ isActive }"
-              ><NavLink :class="{ 'text-blue-500': isActive }">{{
+              ><NavLink data-nav="nav" :class="{ 'text-blue-500': isActive }">{{
                 route.name
               }}</NavLink></RouterLink
             >
@@ -71,10 +71,4 @@ const routes: Readonly<NavBarModel[]> = [
       </div>
     </div>
   </nav>
-
-  <ul class="flex">
-    <li v-for="route of routes" :key="route.name">
-      <RouterLink :to="route.path">{{ route.name }}</RouterLink>
-    </li>
-  </ul>
 </template>
