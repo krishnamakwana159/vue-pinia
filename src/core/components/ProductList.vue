@@ -40,7 +40,7 @@ const { productList } = storeToRefs(productStore)
         </tbody>
       </table>
 
-      <p v-else>Add Product to see the Product List</p>
+      <p v-else class="font-medium text-gray-900 dark:text-white">Add Product to see the Product List</p>
     </div>
   </div>
 </template>

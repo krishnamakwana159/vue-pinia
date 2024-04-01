@@ -4,7 +4,7 @@ describe('Product Form', () => {
     cy.visit('http://localhost:5173/admin/productForm')
   })
 
-  it('Does not do much!', () => {
+  it('Product Form Validation', () => {
 
     const inputArr = [
       { name: 'productName', errorDiv: 'productName-error', value: '', errMsg: 'Value is required', errorDivExist: true, isDropDown: false }, 
@@ -38,7 +38,7 @@ describe('Product Form', () => {
   })
 
 
-  it('Add Product is binded in Table or not', () => {
+  it('Add Product Test Case', () => {
 
     const productObj = {
       name: 'ProductAB',
@@ -52,7 +52,7 @@ describe('Product Form', () => {
     
     cy.get('#productCategory').select(productObj.category)
 
-    cy.get('input[type="submit"]').click();
+    cy.get('input[type="submit"]').should('contain.value', 'Add Product').click();
     
     cy.get('table tr:last').contains(productObj.name)
 
@@ -83,7 +83,7 @@ describe('Product Form', () => {
     
     cy.get('#productCategory').select(productObj.category)
 
-    cy.get('input[type="submit"]').click();
+    cy.get('input[type="submit"]').should('contain.value', 'Add Product').click();
     
     // Check the Product is binded in table or not
     cy.get('table tr:last').contains(productObj.name)
@@ -108,7 +108,7 @@ describe('Product Form', () => {
     
     cy.get('#productCategory').select(newProductObj.category)
 
-    cy.get('input[type="submit"]').click();
+    cy.get('input[type="submit"]').should('contain.value', 'Edit Product').click();
     
     // Check if the new Value is binded to Table or not
     cy.get('table tr:last').contains(newProductObj.name)
@@ -125,7 +125,8 @@ describe('Product Form', () => {
     cy.get('table tr:last').should('not.contain',productObj.category)
   })
 
-  it('Delete Test Case', () => {
+
+  it('Delete Product Test Case', () => {
 
     const productObj = {
       name: 'ProductAB',
