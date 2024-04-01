@@ -1,4 +1,4 @@
-describe('My First Test', () => {
+describe('Product Form', () => {
 
   beforeEach(() => {
     cy.visit('http://localhost:5173/admin/productForm')
@@ -59,5 +59,41 @@ describe('My First Test', () => {
     cy.get('table tr:last').contains(productObj.price)
 
     cy.get('table tr:last').contains(productObj.category)
+  })
+
+
+  it('Edit Product Test Case' , () => {
+
+    const productObj = {
+      name: 'ProductAB',
+      price: 5000,
+      category: 'Electronic'
+    }
+
+    // Fill the product Detail in product form
+    cy.get(`#productName`).type(productObj.name)
+
+    cy.get('#productPrice').type(productObj.price.toString())
+    
+    cy.get('#productCategory').select(productObj.category)
+
+    cy.get('input[type="submit"]').click();
+    
+    // Check the Product is binded in table or not
+    cy.get('table tr:last').contains(productObj.name)
+
+    cy.get('table tr:last').contains(productObj.price)
+
+    cy.get('table tr:last').contains(productObj.category)
+
+    cy.get('table tbody tr:last-child button:first-child').first().click()
+
+    // Check Edit Product is binded in Form or not
+    cy.get('#productName').should('have.value',productObj.name)
+    
+    cy.get('#productPrice').should('have.value', productObj.price.toString())
+
+    cy.get('#productCategory').should('have.value', productObj.category)
+
   })
 })
