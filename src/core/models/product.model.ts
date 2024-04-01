@@ -1,6 +1,6 @@
 export class ProductModel {
   name: string
-  price: number
+  price: number | null
   category: string
 
   constructor(name: string, price: number, category: string) {
