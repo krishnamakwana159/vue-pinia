@@ -70,6 +70,12 @@ describe('Product Form', () => {
       category: 'Electronic'
     }
 
+    const newProductObj = {
+      name: 'Product C',
+      price: 10000,
+      category: 'Furniture'
+    }
+
     // Fill the product Detail in product form
     cy.get(`#productName`).type(productObj.name)
 
@@ -95,5 +101,54 @@ describe('Product Form', () => {
 
     cy.get('#productCategory').should('have.value', productObj.category)
 
+    // Add new Value to Current Form
+    cy.get(`#productName`).clear().type(newProductObj.name)
+
+    cy.get('#productPrice').clear().type(newProductObj.price.toString())
+    
+    cy.get('#productCategory').select(newProductObj.category)
+
+    cy.get('input[type="submit"]').click();
+    
+    // Check if the new Value is binded to Table or not
+    cy.get('table tr:last').contains(newProductObj.name)
+
+    cy.get('table tr:last').contains(newProductObj.price)
+
+    cy.get('table tr:last').contains(newProductObj.category)
+
+    // Check if the old value is removed from table or not
+    cy.get('table tr:last').should('not.contain',productObj.name)
+
+    cy.get('table tr:last').should('not.contain',productObj.price)
+
+    cy.get('table tr:last').should('not.contain',productObj.category)
+  })
+
+  it('Delete Test Case', () => {
+
+    const productObj = {
+      name: 'ProductAB',
+      price: 5000,
+      category: 'Furniture'
+    }
+
+    // Fill the product Detail in product form
+    cy.get(`#productName`).type(productObj.name)
+
+    cy.get('#productPrice').type(productObj.price.toString())
+    
+    cy.get('#productCategory').select(productObj.category)
+
+    cy.get('input[type="submit"]').click();
+
+    cy.get('table tbody tr:last-child button:first-child').last().click()
+
+    // Check if the Value is been removed from the Product List
+    cy.get('table tr:last').should('not.contain',productObj.name)
+
+    cy.get('table tr:last').should('not.contain',productObj.price)
+
+    cy.get('table tr:last').should('not.contain',productObj.category)
   })
 })
