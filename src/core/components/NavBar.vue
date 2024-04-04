@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { NavBarModel } from '@/core/models/navbar.model'
-
+import { useCartStore } from '@/core/store/cart';
+const cartItems = useCartStore().items;
 const routes: Readonly<NavBarModel[]> = [
   new NavBarModel('/admin/productList', 'Product List'),
-  new NavBarModel('/admin/productForm', 'Product Form')
+  new NavBarModel('/admin/productForm', 'Product Form'),
+  new NavBarModel('/admin/cart', 'Cart')
 ]
 </script>
 
@@ -56,10 +58,19 @@ const routes: Readonly<NavBarModel[]> = [
               class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:p-0 hover:md:text-blue-700"
               :to="route.path"
               v-slot="{ isActive }"
-              ><NavLink data-nav="nav" :class="{ 'text-blue-500': isActive }">{{
+              >
+              <NavLink data-test="navCart" v-if="route.name=='Cart'" data-nav="nav" :class="{ 'text-blue-500': isActive }">
+                 {{ route.name }} ({{ cartItems.length }})
+              </NavLink>
+              <NavLink data-test="navProductList" v-else-if="route.name=='Product List'" data-nav="nav" :class="{ 'text-blue-500': isActive }">
+                 {{ route.name }}
+              </NavLink>
+              <NavLink :id="'nav_' + route.path" v-else data-nav="nav" :class="{ 'text-blue-500': isActive }">
+              {{
                 route.name
-              }}</NavLink></RouterLink
-            >
+              }}
+              </NavLink>
+            </RouterLink>
           </li>
         </ul>
       </div>

@@ -143,7 +143,10 @@ describe('Product Form', () => {
 
     cy.get('input[type="submit"]').click();
 
-    cy.get('table tbody tr:last-child button:first-child').last().click()
+    cy.get('tr:last [data-test="btnDeleteProduct"]').click();
+    // cy.get('#btnDeleteProduct').click();
+    // cy.get('table tbody tr:last-child button:first-child #btnDeleteProduct').last().click()
+    // cy.get('[data-test]="btnDeleteProduct"').should('exist').click();
 
     // Check if the Value is been removed from the Product List
     cy.get('table tr:last').should('not.contain',productObj.name)
