@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { ProductModel } from '../models/product.model'
 
 export const useProductStore = defineStore('product', () => {
-  const productList = ref<ProductModel[]>([new ProductModel('Product A', 499, 'Electronic')])
+  const productList = ref<ProductModel[]>([new ProductModel(1,'Product A', 499, 'Electronic')])
 
   const getProduct = (index: number) =>
     productList.value.find((_, currIndex) => currIndex === index)

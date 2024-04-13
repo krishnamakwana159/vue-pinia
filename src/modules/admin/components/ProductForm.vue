@@ -20,6 +20,7 @@ const { categoryList } = storeToRefs(categoryStore)
 const { getProduct } = productStore
 
 const productForm = ref<ProductModel>({
+  id: 0,
   name: '',
   price: null,
   category: ''
