@@ -58,6 +58,7 @@ const routes: Readonly<NavBarModel[]> = [
               class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:p-0 hover:md:text-blue-700"
               :to="route.path"
               v-slot="{ isActive }"
+              :data-testid="'mainNav-' + route.path.split('/').pop()"
               >
               <NavLink data-test="navCart" v-if="route.name=='Cart'" data-nav="nav" :class="{ 'text-blue-500': isActive }">
                  {{ route.name }} ({{ cartItems.length }})
