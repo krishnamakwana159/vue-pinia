@@ -90,10 +90,6 @@ const removeFromCart = (productId: number) => {
 </script>
 
 <style scoped>
-.cart-container {
-    color: white;
-}
-
 ul#cart-items {
     list-style: none;
     padding: 0;

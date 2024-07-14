@@ -26,7 +26,7 @@ const { productList } = storeToRefs(productStore)
             <th scope="col" class="px-6 py-3">Name</th>
             <th scope="col" class="px-6 py-3">Price</th>
             <th scope="col" class="px-6 py-3">Category</th>
-            <th scope="col" class="px-6 py-3" colspan="2">Actions</th>
+            <th scope="col" class="px-6 py-3" colspan="3">Actions</th>
           </tr>
         </thead>
 

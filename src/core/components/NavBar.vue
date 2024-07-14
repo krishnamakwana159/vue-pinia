@@ -5,13 +5,14 @@ const cartItems = useCartStore().items;
 const routes: Readonly<NavBarModel[]> = [
   new NavBarModel('/admin/productList', 'Product List'),
   new NavBarModel('/admin/productForm', 'Product Form'),
-  new NavBarModel('/admin/cart', 'Cart')
+  new NavBarModel('/admin/cart', 'Cart'),
+  new NavBarModel('/admin/login', 'Login')
 ]
 </script>
 
 <template>
   <nav
-    class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600"
+    class="fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600"
   >
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -51,11 +52,11 @@ const routes: Readonly<NavBarModel[]> = [
         id="navbar-sticky"
       >
         <ul
-          class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+          class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md: dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
         >
           <li v-for="route of routes" :key="route.name">
             <RouterLink
-              class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:p-0 hover:md:text-blue-700"
+              class="block py-2 px-3 bg-blue-700 rounded md:bg-transparent md:p-0 hover:md:text-blue-700"
               :to="route.path"
               v-slot="{ isActive }"
               >

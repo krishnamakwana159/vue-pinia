@@ -3,6 +3,7 @@ import type { RouteRecordRaw } from 'vue-router'
 import AdminDashboard from './views/AdminDashboard.vue'
 import ProductForm from './components/ProductForm.vue'
 import Cart from '@/core/components/Cart.vue'
+import Login from '@/core/components/Login.vue'
 
 export const AdminRoute: Readonly<RouteRecordRaw[]> = [
   {
@@ -25,6 +26,11 @@ export const AdminRoute: Readonly<RouteRecordRaw[]> = [
         path: 'cart',
         name: 'cart',
         component: Cart
+      },
+      {
+        path: 'login',
+        name: 'login',
+        component: Login
       }
     ]
   }
